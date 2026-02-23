@@ -13,15 +13,16 @@ const resetter=()=>{
 }
 
 const insertNumber=(sentNumber)=>{
-    
+    console.log("Sent Number:",sentNumber);
+    console.log("Display on preinsertion:",displayNum);
     displayNum=(displayNum*10)+sentNumber;
     setDisplay(displayNum);
-    console.log("insertNumber called:",displayNum);
+    console.log("Display on InsertNumber set:",displayNum);
 }
 
 const operationEnterNumbers=(op)=>{
     let currentString=displayNum.toString();
-    if(op==='-' && storedNums==="")
+    if(op==='-' && storedNums==="" && displayNum>0)
     {
         storedNums+="-"+currentString;
     }
@@ -137,7 +138,9 @@ keypad.addEventListener("click",(event)=>{
         const valueNumbered=Number(value);
         if(!(Number.isNaN(valueNumbered)))
         {
+            console.log("VALUE NUMBER CALLED:",valueNumbered);
             insertNumber(valueNumbered);
+            
         }
         switch(value)
         {
