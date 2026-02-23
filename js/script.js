@@ -20,7 +20,7 @@ const insertNumber=(sentNumber)=>{
 }
 
 const operationEnterNumbers=(op)=>{
-    const currentString=displayNum.toString();
+    let currentString=displayNum.toString();
     if(op==='-' && storedNums==="")
     {
         storedNums+="-"+currentString;
