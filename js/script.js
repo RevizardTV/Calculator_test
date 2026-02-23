@@ -138,6 +138,10 @@ keypad.addEventListener("click",(event)=>{
         const valueNumbered=Number(value);
         if(!(Number.isNaN(valueNumbered)))
         {
+            if(displayNum<0)
+            {
+                valueNumbered*=-1;
+            }
             console.log("VALUE NUMBER CALLED:",valueNumbered);
             insertNumber(valueNumbered);
             
