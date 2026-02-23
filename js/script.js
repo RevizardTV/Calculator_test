@@ -19,7 +19,7 @@ const insertNumber=(sentNumber)=>{
     console.log("insertNumber called:",displayNum);
 }
 
-function operationEnterNumbers(op){
+const operationEnterNumbers=(op)=>{
     let currentString=displayNum.toString();
     if(op==='-' && storedNums==="")
     {
@@ -36,6 +36,18 @@ function operationEnterNumbers(op){
     displayNum=0;
     setDisplay(displayNum);
     setStored(storedNums);
+}
+
+const equateNumbers=()=>{
+    if(!(storedNums===""))
+    {
+        result=new Function(`return ${storedNums}`)();
+
+    }
+    storedNums="";
+    console.log(result);
+    setDisplay(result);
+    setStored("");
 }
 //Archived
 /*
@@ -90,17 +102,7 @@ const divideNumbers=()=>{
     setStored(storedNums);
 }
 */
-const equateNumbers=()=>{
-    if(!(storedNums===""))
-    {
-        result=new Function(`return ${storedNums}`)();
 
-    }
-    storedNums="";
-    console.log(result);
-    setDisplay(result);
-    setStored("");
-}
 
 // Variable initiation
 //let storedNum=0;
@@ -145,6 +147,8 @@ keypad.addEventListener("click",(event)=>{
             case '*':
                 operationEnterNumbers(value);
                 break;
+            case '=':
+                equateNumbers();
             default:
                 console.log("Default condition reached");
                 break;
