@@ -1,7 +1,7 @@
 //Functions
 
 const consoleChecker=()=>{
-    console.log(1);
+    console.log("Commit 3");
 }
 
 const resetter=()=>{
