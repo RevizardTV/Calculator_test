@@ -19,6 +19,23 @@ const insertNumber=(sentNumber)=>{
     console.log("insertNumber called:",displayNum);
 }
 
+const operationEnterNumbers(op)=>{
+    const currentString=displayNum.toString();
+    if(op==='-' && storedNums==="")
+    {
+        storedNums+="-"+currentString;
+    }
+    else
+    {
+        storedNums+=op+currentString;
+    }
+    displayNum=0;
+    setDisplay(displayNum);
+    setStored(storedNums);
+}
+//Archived
+/*
+    
 const addNumbers=()=>{
     if(storedNums==="")
     {
@@ -68,7 +85,7 @@ const divideNumbers=()=>{
     setDisplay(displayNum);
     setStored(storedNums);
 }
-
+*/
 const equateNumbers=()=>{
     if(!(storedNums===""))
     {
@@ -106,6 +123,8 @@ const setStored=(newValue)=>{
 
 resetButton.addEventListener("click",resetter);
 
+consoleButton.addEventListener("click",consoleChecker);
+
 keypad.addEventListener("click",(event)=>{
     if(event.target.classList.contains("buttonItems")){
         const value=event.target.innerText;
@@ -117,22 +136,13 @@ keypad.addEventListener("click",(event)=>{
         switch(value)
         {
             case '+':
-                addNumbers();
-                break;
             case '-':
-                subtractNumbers();
-                break;
-            case '*':
-                multiplyNumbers();
-                break;
             case '/':
-                divideNumbers();
-                break;
-            case '=':
-                equateNumbers();
+            case '*':
+                operationEnterNumbers(value);
                 break;
             default:
-                console.log("Error:Default condition reached");
+                console.log("Default condition reached");
                 break;
         }
     }
