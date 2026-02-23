@@ -42,11 +42,11 @@ const equateNumbers=()=>{
     if(!(storedNums===""))
     {
         result=new Function(`return ${storedNums}`)();
+        setDisplay(result);
 
     }
     storedNums="";
     console.log(result);
-    setDisplay(result);
     setStored("");
 }
 //Archived
