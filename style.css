@@ -1,0 +1,64 @@
+.test1
+{
+    color:red;
+}
+
+.setHeader
+{
+    display:flex;
+    justify-content:center; 
+}
+
+.calcBox
+{
+    display:grid;
+    border:solid 5px black;
+    background-color:grey;
+    color:white;
+    font-size:50px;
+
+}
+
+.calcNum
+{
+    display:flex;
+    justify-content:center;
+    align-content:center;
+
+}
+
+.calcNum2
+{
+    font-size:20px;
+    color:white;
+    display:flex;
+    justify-content:left;
+    align-content:top;
+
+}
+
+.buttonGrid
+{
+    display:grid;
+    margin-top:10px;
+    grid-template:repeat(4,50px)/repeat(3,50px);
+    justify-content:center;
+    gap:30px;
+    
+}
+
+
+.buttonItems
+{
+    display:flex;
+    padding:10px;
+    font-size:25px;
+    align-content:center;
+    justify-content:center;
+    
+}
+
+.setHidden
+{
+    visibility:hidden;
+}
