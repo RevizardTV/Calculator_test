@@ -43,6 +43,7 @@ const equateNumbers=()=>{
     if(!(storedNums===""))
     {
         result=new Function(`return ${storedNums}`)();
+        result=Math.trunc(result);
         setDisplay(result);
 
     }
