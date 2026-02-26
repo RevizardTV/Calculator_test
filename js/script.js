@@ -1,7 +1,7 @@
 //Functions
 
 const consoleChecker=()=>{
-    console.log(1);
+    console.log("DisplayNum:",displayNum,"\nStoredNums:",storedNums);
 }
 
 const resetter=()=>{
@@ -13,12 +13,47 @@ const resetter=()=>{
 }
 
 const insertNumber=(sentNumber)=>{
-    
+    console.log("Sent Number:",sentNumber);
+    console.log("Display on preinsertion:",displayNum);
     displayNum=(displayNum*10)+sentNumber;
     setDisplay(displayNum);
-    console.log("insertNumber called:",displayNum);
+    console.log("Display on InsertNumber set:",displayNum);
 }
 
+const operationEnterNumbers=(op)=>{
+    let currentString=displayNum.toString();
+    if(op==='-' && storedNums==="" && displayNum>0)
+    {
+        storedNums+="-"+currentString;
+    }
+    else if(storedNums==="")
+    {
+        storedNums+=currentString;
+    }
+    else
+    {
+        storedNums+=op+currentString;
+    }
+    displayNum=0;
+    setDisplay(displayNum);
+    setStored(storedNums);
+}
+
+const equateNumbers=()=>{
+    if(!(storedNums===""))
+    {
+        result=new Function(`return ${storedNums}`)();
+        result=Math.trunc(result);
+        setDisplay(result);
+
+    }
+    storedNums="";
+    console.log(result);
+    setStored("");
+}
+//Archived
+/*
+    
 const addNumbers=()=>{
     if(storedNums==="")
     {
@@ -68,24 +103,15 @@ const divideNumbers=()=>{
     setDisplay(displayNum);
     setStored(storedNums);
 }
+*/
 
-const equateNumbers=()=>{
-    if(!(storedNums===""))
-    {
-        result=new Function(`return ${storedNums}`)();
-
-    }
-    storedNums="";
-    console.log(result);
-    setDisplay(result);
-    setStored("");
-}
 
 // Variable initiation
 //let storedNum=0;
 let displayNum=0;
 let storedNums="";
 let result=0;
+let valueNumbered=0;
 //Node linking
 const displayStoredValue=document.getElementById("storedNum");
 const displayCurrentValue=document.getElementById("calcNum");
@@ -106,34 +132,41 @@ const setStored=(newValue)=>{
 
 resetButton.addEventListener("click",resetter);
 
+consoleButton.addEventListener("click",consoleChecker);
+
 keypad.addEventListener("click",(event)=>{
     if(event.target.classList.contains("buttonItems")){
         const value=event.target.innerText;
-        const valueNumbered=Number(value);
+        if(displayNum<0)
+        {
+            valueNumbered=Number(-value);
+        }
+        else
+        {
+             valueNumbered=Number(value);
+        }
         if(!(Number.isNaN(valueNumbered)))
         {
+            console.log("VALUE NUMBER CALLED:",valueNumbered);
             insertNumber(valueNumbered);
+            
         }
-        switch(value)
-        {
-            case '+':
-                addNumbers();
-                break;
-            case '-':
-                subtractNumbers();
-                break;
-            case '*':
-                multiplyNumbers();
-                break;
-            case '/':
-                divideNumbers();
-                break;
-            case '=':
-                equateNumbers();
-                break;
-            default:
-                console.log("Error:Default condition reached");
-                break;
+        else{
+            switch(value)
+            {
+                case '+':
+                case '-':
+                case '/':
+                case '*':
+                    operationEnterNumbers(value);
+                    break;
+                case '=':
+                    equateNumbers();
+                    break;
+                default:
+                    console.log("Default condition reached");
+                    break;
+            }
         }
     }
 })
